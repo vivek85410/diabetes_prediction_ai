@@ -1,0 +1,245 @@
+<!-- <h1>Welcome to the home page</h1> -->
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthAI | Early Diabetes Detection</title>
+    <style>
+        :root {
+            --primary: #2d5cf7;
+            --secondary: #00d2ff;
+            --accent: #ff4b5c;
+            --bg: #0f172a;
+            --text: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Moving Background Shapes */
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(45, 92, 247, 0.2) 0%, rgba(0, 210, 255, 0.2) 100%);
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: -1;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(-10%, -10%); }
+            to { transform: translate(20%, 20%); }
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 10%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            margin-top: 50px;
+        }
+
+        .hero-content {
+            flex: 1;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            color: var(--secondary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        /* The Button */
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 20px rgba(45, 92, 247, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(45, 92, 247, 0.5);
+            background: #3b69ff;
+        }
+
+        /* Creative Visual: The Pulse */
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .pulse-container {
+            width: 300px;
+            height: 300px;
+            background: rgba(45, 92, 247, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .pulse-ring {
+            position: absolute;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            animation: pulse 3s infinite;
+            opacity: 0;
+        }
+
+        .pulse-ring:nth-child(2) { animation-delay: 1s; }
+        .pulse-ring:nth-child(3) { animation-delay: 2s; }
+
+        @keyframes pulse {
+            0% { width: 100px; height: 100px; opacity: 0.5; }
+            100% { width: 450px; height: 450px; opacity: 0; }
+        }
+
+        .heart-icon {
+            font-size: 80px;
+            filter: drop-shadow(0 0 10px var(--accent));
+            animation: beat 1.2s infinite;
+        }
+
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.2); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.15); }
+        }
+
+        /* Floating Info Cards */
+        .info-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            padding: 15px 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            animation: float 4s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .card-1 { top: 10%; right: 0; animation-delay: 0s; }
+        .card-2 { bottom: 10%; left: 0; animation-delay: 1s; }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 120px; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-visual { margin-top: 50px; }
+            .hero p { margin: 0 auto 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blob"></div>
+
+    <nav>
+        <div class="logo">HealthAI</div>
+        <div style="display: flex; gap: 30px;">
+            <span style="color: #94a3b8; cursor: pointer;">Technology</span>
+            <span style="color: #94a3b8; cursor: pointer;">About</span>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Predicting <span>Diabetes</span> with AI Powered Technology.</h1>
+            <p>Empowering healthcare through data. Use our advanced machine learning model to assess risk factors based on medical history in seconds for womens.</p>
+            <a href="/predictdata" class="cta-button">Start Prediction →</a>
+        </div>
+
+        <div class="hero-visual">
+            <div class="pulse-container">
+                <div class="pulse-ring"></div>
+                <div class="pulse-ring"></div>
+                <div class="pulse-ring"></div>
+                <div class="heart-icon">❤️</div>
+            </div>
+            
+            <div class="info-card card-1">
+                <strong>79%</strong> Accuracy Rate
+            </div>
+            <div class="info-card card-2">
+                <strong>Real-time</strong> Analysis
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
